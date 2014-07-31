@@ -17,7 +17,7 @@
 */
 $plugin_url = WP_PLUGIN_URL . '/wpcodeschool-badges';
 $options = array();
-$show_json = true; //for debugging
+$show_json = false; //for debugging
 
 /*
 * 	Add Link to Admin Menu
@@ -56,12 +56,14 @@ function wpcodeschool_badges_options_page(){
 		$hidden_field = esc_html($_POST['wpcodeschool_form_submitted']);
 		if ($hidden_field == 'Y'){
 			$wpcodeschool_username = trim(esc_html($_POST['wpcodeschool_username']));
-			$wpcodeschool_number_of_badges_to_display = trim(esc_html($_POST['wpcodeschool_number_of_badges_to_display']));
+			$wpcodeschool_display_sub_badges = $_POST['wpcodeschool_display_sub_badges'];
+			//$wpcodeschool_number_of_badges_to_display = trim(esc_html($_POST['wpcodeschool_number_of_badges_to_display']));
 			$wpcodeschool_profile = wpcodeschool_badges_get_profile($wpcodeschool_username);
 			$last_updated = time();
 			//write to options table
 			$options['wpcodeschool_username']  						= $wpcodeschool_username;
-			$options['wpcodeschool_number_of_badges_to_display']	= $wpcodeschool_number_of_badges_to_display;
+			$options['wpcodeschool_display_sub_badges']  			= $wpcodeschool_display_sub_badges;
+			//$options['wpcodeschool_number_of_badges_to_display']	= $wpcodeschool_number_of_badges_to_display;
 			$options['wpcodeschool_profile']						= $wpcodeschool_profile;
 			$options['last_updated'] 								= $last_updated;
 			update_option('wpcodeschool_badges', $options);
@@ -72,8 +74,9 @@ function wpcodeschool_badges_options_page(){
 	$options = get_option('wpcodeschool_badges');
 	if($options != ''){
 		$wpcodeschool_username 						= $options['wpcodeschool_username'];
+		$wpcodeschool_display_sub_badges 			= $options['wpcodeschool_display_sub_badges'];
 		$wpcodeschool_profile 						= $options['wpcodeschool_profile'];
-		$wpcodeschool_number_of_badges_to_display 	= $options['wpcodeschool_number_of_badges_to_display'];
+		//$wpcodeschool_number_of_badges_to_display 	= $options['wpcodeschool_number_of_badges_to_display'];
 		$last_updated 								= $options['last_updated'];
 	}
 	require('inc/options-page-wrapper.php');
@@ -95,10 +98,10 @@ function wpcodeschool_badges_get_profile($wpcodeschool_username){
 	return $wpcodeschool_profile;
 }
 
-// function wpcodeschool_badges_styles(){
-// 	wp_enqueue_style('wpcodeschool_badges_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
-// }
-// add_action('admin_head', 'wpcodeschool_badges_styles');
+function wpcodeschool_badges_styles(){
+	wp_enqueue_style('wpcodeschool_badges_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
+}
+add_action('admin_head', 'wpcodeschool_badges_styles');
 
 
 ?>

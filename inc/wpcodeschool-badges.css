@@ -1,4 +1,3 @@
-
 /*
  *	Backend Styles
  *
@@ -29,80 +28,32 @@
 }
 
 .settings_page_wpcodeschool-badges .postbox .inside {
-	display: table
+	display: table;
 }
-
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges li.badge-group {
-	
-
-}
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges li.main-course-image {
-	
-
-}
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges li.main-course-image {
-	
-
-}
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges ul.course-sub-badges {
-	
-
-}
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges li.course-sub-badge-image {
-	
-
-}
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges li.course-sub-badge-image-name {
-	
-
-}
-
-
-
-
-
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges > li {
-	float: left; 
-	margin: 10px; 
-	text-align: center; 
-	height: 170px; 
-	width: 85px;
-	overflow: hidden;
-}           
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges li li {
-	margin: 2px 0; 
-	padding: 0;
-}
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges img {
-	float: left;
-	width: 100%; 
-	margin-bottom: 5px;
-}           
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-project-name a {
-	font-size: .8em; 
-	text-decoration: none; 
-	line-height: .5em
-}
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges-and-points li {
-	padding: 5px 10px; 
-	background: #deddd7; 
-	color: #606e67; 
-	/*border-radius: 20px; */
-	font-size: 1em; 
+.no-sub-badges {
 	display: inline-block;
-	/*float: left;*/
-}  
+	width: 200px;
+}
+.course-title {
+	clear: left;
+}
+.course-badge {
+	float: left;
+	width: 125px;
+}
+.in-progress .course-badge  {
 
+	-webkit-filter:grayscale(1) brightness(.66);
+
+}
+.sub-badge {
+	float: left;
+	width: 50px;
+	margin-top: 7px;
+	margin-left: 10px;
+}
 .settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges-and-points li:first-child {
-	margin-right: 5px
+	/*margin-right: 5px*/
 }   
 
 .settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges-and-points strong {
