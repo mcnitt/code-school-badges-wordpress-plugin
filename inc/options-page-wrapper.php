@@ -76,8 +76,6 @@
 									?>
 									<?php for($i = 0; $i < $wpcodeschool_courses_completed_count; $i++ ): ?>
 										<div class="badge-group <?php if ($wpcodeschool_display_sub_badges != true){ echo 'no-sub-badges'; } ?>">
-										
-											<h4 class="course-title"><a href="<?php echo $wpcodeschool_courses_completed[$i]['url']; ?>" target="_blank"><?php echo $wpcodeschool_courses_completed[$i]['title']; ?></a></h4>
 
 											<a href="<?php echo $wpcodeschool_courses_completed[$i]['url']; ?>" target="_blank"><img class="course-badge"src="<?php echo $wpcodeschool_courses_completed[$i]['badge']; ?>" alt="<?php echo $wpcodeschool_courses_completed[$i]['title']; ?> badge"></a>
 					
@@ -87,7 +85,7 @@
 											          <img class="sub-badge" src="<?php echo $badge['badge']; ?>" alt="<?php echo $badge['name']; ?> badge">
 									            <?php endif; endforeach; ?>
 									        <?php endif; ?>	
-															
+											<p class="course-title"><a href="<?php echo $wpcodeschool_courses_completed[$i]['url']; ?>" target="_blank"><?php echo $wpcodeschool_courses_completed[$i]['title']; ?></a></p>
 										</div>								
 									<?php endfor; ?>
 								</div>
@@ -175,8 +173,8 @@
 									<li>Joined: <strong><?php echo substr($wpcodeschool_profile['user']['member_since'], 0, 10); ?></strong></li>							
 									<li>Courses Completed: <strong><?php echo count($wpcodeschool_profile['courses']['completed']); ?></strong></li>
 									<li>Courses In Progress: <strong><?php echo count($wpcodeschool_profile['courses']['in_progress']); ?></strong></li>
-									<li>Earned Badges: <strong><?php echo count($wpcodeschool_profile['badges']); ?></strong></li>
-									<li>Total Points: <strong><?php echo $wpcodeschool_profile['user']['total_score']; ?></strong></li>
+									<li>Earned Badges: <strong><?php echo number_format(count($wpcodeschool_profile['badges'])); ?></strong></li>
+									<li>Total Points: <strong><?php echo number_format($wpcodeschool_profile['user']['total_score']); ?></strong></li>
 								</ul>
 								<form name="wpcodeschool_username_form" method="post" action="">
 									<input type="hidden" name="wpcodeschool_form_submitted" value="Y">

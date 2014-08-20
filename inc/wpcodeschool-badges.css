@@ -2,6 +2,11 @@
  *	Backend Styles
  *
 */
+.settings_page_wpcodeschool-badges {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
 .settings_page_wpcodeschool-badges .wrap, h2 {
 	color: #3f4944;
 }
@@ -29,6 +34,13 @@
 
 .settings_page_wpcodeschool-badges .postbox .inside {
 	display: table;
+}
+.badge-group {
+	
+	background-color: #deddd7;
+	border-radius: 3px;
+	padding: 1em;
+	margin-bottom: 1em;
 }
 .no-sub-badges {
 	display: inline-block;
