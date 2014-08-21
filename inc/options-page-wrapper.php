@@ -183,7 +183,7 @@
 									<fieldset>
 										<legend class="screen-reader-text"><span>Badge Display Options</span></legend>
 										<label for="wpcodeschool_display_sub_badges">Display sub badges </label>
-											<input name="wpcodeschool_display_sub_badges" type="checkbox" id="wpcodeschool_display_sub_badges" <?php if ($wpcodeschool_display_sub_badges) echo 'checked="checked"' ?> value="1"  />
+											<input name="wpcodeschool_display_sub_badges" type="checkbox" id="wpcodeschool_display_sub_badges" <?php checked($wpcodeschool_display_sub_badges); ?> value="1"  />
 									</fieldset>
 									<!-- <p><label for="wpcodeschool_number_of_badges_to_display">Number of badges to display</label></p>
 									<p><input name="wpcodeschool_number_of_badges_to_display" id="wpcodeschool_number_of_badges_to_display" type="text" value="<?php echo $wpcodeschool_number_of_badges_to_display; ?>" /></p> -->
