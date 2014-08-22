@@ -97,6 +97,8 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		// Widget output
 		extract($args); //not used but required
 		$title = apply_filters('widget_title', $instance['title']);
+		$display = $instance['display'];
+
 		$options = get_option('wpcodeschool_badges');
 		$wpcodeschool_profile = $options['wpcodeschool_profile'];
 
@@ -107,6 +109,7 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		// Save widget options
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['display'] = $new_instance['display'];
 
 		return $instance;
 	}
@@ -114,6 +117,11 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 	function form( $instance ) {
 		// Output admin widget options form
 		$title = esc_attr($instance['title']);
+		$display = $instance['display'];
+
+		$options = get_option('wpcodeschool_badges');
+		$wpcodeschool_profile = $options['wpcodeschool_profile'];
+
 		require('inc/widget-fields.php');
 	}
 }
