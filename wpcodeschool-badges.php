@@ -133,7 +133,37 @@ function wpcodeschool_badges_register_widgets() {
 	register_widget( 'Wpcodeschool_Badges_Widget' );
 }
 
-add_action( 'widgets_init', 'wpcodeschool_badges_register_widgets' );	
+add_action( 'widgets_init', 'wpcodeschool_badges_register_widgets' );
+
+
+/*
+* 	Create shortcodes
+*
+*/
+function wpcodeschool_badges_shortcode($atts, $content = null){
+
+	global $post;
+
+	$options = get_option('wpcodeschool_badges');
+	$wpcodeschool_profile = $options['wpcodeschool_profile'];
+
+	extract ( shortcode_atts(array(
+		'num_badges' => count($wpcodeschool_profile['courses']['completed']),
+		'tooltip' => 'on'
+	), $atts) );
+
+	if ( $tooltip == 'on' ) $tooltip = 1;
+	if ( $tooltip == 'off' ) $tooltip = 0;
+	$display_tooltip = $tooltip;
+
+	//buffer include so it's not added at the top of the page
+	ob_start();
+	require ( 'inc/front-end.php' );
+	$content = ob_get_clean();
+	
+	return $content;
+}
+add_shortcode( 'wpcodeschool_badges', 'wpcodeschool_badges_shortcode' );
 
 /*
 * 	Get Code School user profile JSON
