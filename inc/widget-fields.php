@@ -1,20 +1,19 @@
 <p>
-  <label for="<?php echo $this->get_field_name('title'); ?>">Title</label> 
-  <input class="widefat" name="<?php echo $this->get_field_name('title'); ?>" id="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo ($title ?: $wpcodeschool_profile['user']['username'] . '\'s Code School Badges'); ?>" />
+  <label>Title</label> 
+  <input class="widefat" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
 </p>
-<ul class="wpcodeschool-badges-and-points">
-	<li>Joined: <strong><?php echo substr($wpcodeschool_profile['user']['member_since'], 0, 10); ?></strong></li>							
-	<li>Courses Completed: <strong><?php echo count($wpcodeschool_profile['courses']['completed']); ?></strong></li>
-	<li>Courses In Progress: <strong><?php echo count($wpcodeschool_profile['courses']['in_progress']); ?></strong></li>
-	<li>Earned Badges: <strong><?php echo number_format(count($wpcodeschool_profile['badges'])); ?></strong></li>
-	<li>Total Points: <strong><?php echo number_format($wpcodeschool_profile['user']['total_score']); ?></strong></li>
-</ul>
+
 <p>
-	<fieldset>
-		<legend>How to display</legend>
-		<?php if($display == ''){$display = 'badges';} ?>
-		<label><input type="radio" name="<?php echo $this->get_field_name('display'); ?>" value="badges" <?php if ($display == 'badges'){echo 'checked';} ?>>Course badges</label><br>
-		<label><input type="radio" name="<?php echo $this->get_field_name('display'); ?>" value="subbadges" <?php if ($display == 'subbadges'){echo 'checked';} ?>>Course badges and sub badges</label><br>
-		<label><input type="radio" name="<?php echo $this->get_field_name('display'); ?>" value="textonly" <?php if ($display == 'textonly'){echo 'checked';} ?>>Text only</label>
-	</fieldset>
+	Courses Completed: 
+	<strong><?php echo count($wpcodeschool_profile['courses']['completed']); ?></strong>
+</p>
+
+<p>
+	<label>How many of your most recent completed course badges would you you like to display?</label> 
+	<input size="4" name="<?php echo $this->get_field_name('num_badges'); ?>" type="text" value="<?php echo $num_badges; ?>" />
+</p>
+
+<p>
+  <label>Display course information tooltips?</label> 
+  <input type="checkbox" name="<?php echo $this->get_field_name('display_tooltip'); ?>" value="1" <?php checked( $display_tooltip, 1 ); ?> />
 </p>

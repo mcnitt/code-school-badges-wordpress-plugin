@@ -97,7 +97,8 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		// Widget output
 		extract($args); //not used but required
 		$title = apply_filters('widget_title', $instance['title']);
-		$display = $instance['display'];
+		$num_badges = $instance['num_badges'];
+		$display_tooltip = $instance['display_tooltip'];
 
 		$options = get_option('wpcodeschool_badges');
 		$wpcodeschool_profile = $options['wpcodeschool_profile'];
@@ -109,7 +110,8 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		// Save widget options
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['display'] = $new_instance['display'];
+		$instance['num_badges'] = strip_tags($new_instance['num_badges']);
+		$instance['display_tooltip'] = strip_tags($new_instance['display_tooltip']);
 
 		return $instance;
 	}
@@ -117,7 +119,8 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 	function form( $instance ) {
 		// Output admin widget options form
 		$title = esc_attr($instance['title']);
-		$display = $instance['display'];
+		$num_badges = esc_attr($instance['num_badges']);
+		$display_tooltip = esc_attr($instance['display_tooltip']);
 
 		$options = get_option('wpcodeschool_badges');
 		$wpcodeschool_profile = $options['wpcodeschool_profile'];
@@ -148,10 +151,16 @@ function wpcodeschool_badges_get_profile($wpcodeschool_username){
 	return $wpcodeschool_profile;
 }
 
-function wpcodeschool_badges_styles(){
-	wp_enqueue_style('wpcodeschool_badges_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
+function wpcodeschool_badges_backend_styles(){
+	wp_enqueue_style('wpcodeschool_badges_backend_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
 }
-add_action('admin_head', 'wpcodeschool_badges_styles');
+add_action('admin_head', 'wpcodeschool_badges_backend_styles');
+
+function wpcodeschool_badges_frontend_scripts_and_styles(){
+	wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
+	// wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wptreehouse-badges.js'), array('jquery'), true);
+}
+add_action('wp_enqueue_scripts', 'wpcodeschool_badges_frontend_scripts_and_styles');
 
 
 ?>

@@ -70,5 +70,40 @@
 
 .settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges-and-points strong {
 	/*color: #92ae57;*/
-}           
+}   
+
+/*
+ *	Frontend Styles
+ *
+*/
+
+.wpcodeschool-badge-widget{
+
+}
+
+.wpcodeschool-badge-widget{
+	padding: 0;
+}
+.wpcodeschool-badge-widget li,
+.widget-area .wpcodeschool-badge-widget li {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 0 5px 5px;
+	padding: 10px 0 0;
+	position: relative;	
+	list-style: none;
+}
+.wpcodeschool-badge-widget img {
+	width: 100%;
+	border: none;
+}
+
+
+
+
+.wpcodeschool-badge-widget .wpcodeschool-badge-info {
+
+}
+
 
