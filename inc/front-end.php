@@ -21,7 +21,7 @@
 	$wpcodeschool_courses_completed_count = count($wpcodeschool_courses_completed); 
 ?>
 
-<ul class="wpcodeschool-badge-widget">
+<ul class="wpcodeschool-badge-widget clearfix">
 	<?php for($i = $wpcodeschool_courses_completed_count -1; $i >= $wpcodeschool_courses_completed_count - $num_badges; $i-- ): ?>
 	<li>
 		<a href="<?php echo $wpcodeschool_courses_completed[$i]['url']; ?>" target="_blank">
