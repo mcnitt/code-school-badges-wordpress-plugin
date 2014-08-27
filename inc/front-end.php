@@ -37,5 +37,4 @@
 </ul>
 
 <?php 	
-	echo $after_widget; 
-?>
+	echo $after_widget;

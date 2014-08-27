@@ -161,6 +161,3 @@ function wpcodeschool_badges_frontend_scripts_and_styles(){
 	// wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wptreehouse-badges.js'), array('jquery'), true);
 }
 add_action('wp_enqueue_scripts', 'wpcodeschool_badges_frontend_scripts_and_styles');
-
-
-?>
