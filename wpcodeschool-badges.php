@@ -160,7 +160,7 @@ function wpcodeschool_badges_shortcode($atts, $content = null){
 	ob_start();
 	require ( 'inc/front-end.php' );
 	$content = ob_get_clean();
-	
+
 	return $content;
 }
 add_shortcode( 'wpcodeschool_badges', 'wpcodeschool_badges_shortcode' );
@@ -188,6 +188,6 @@ add_action('admin_head', 'wpcodeschool_badges_backend_styles');
 
 function wpcodeschool_badges_frontend_scripts_and_styles(){
 	wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
-	// wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wptreehouse-badges.js'), array('jquery'), true);
+	// wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wptreehouse-badges.js'), array('jquery'), '', true);
 }
 add_action('wp_enqueue_scripts', 'wpcodeschool_badges_frontend_scripts_and_styles');
