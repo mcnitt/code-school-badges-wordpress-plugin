@@ -1,11 +1,11 @@
 <?php 
 /*
- *	Plugin Name: Code School Badges Plugin
+ *	Plugin Name: Code School Badges
  *	Plugin URI: http://mcnitt.com/wpcodeschool-badges-plugin/
- *	Description: Provides both widgets and shortcodes to help you display your Code School profile badges on your website.
+ *	Description: Provides both widgets and shortcodes to help you display Code School profile badges on your website.
  *	Version: 0.1
  *	Author: Brian McNitt
- *	Author URI: http://mcnitt.com
+ *	Author URI: http://trendmedia.com
  *	License: GPL2
  *
 */
@@ -15,6 +15,7 @@
 * 	Assign Global Variables
 *
 */
+
 $plugin_url = WP_PLUGIN_URL . '/wpcodeschool-badges';
 $options = array();
 $show_json = false; //for debugging
@@ -22,11 +23,11 @@ $show_json = false; //for debugging
 /*
 * 	Add Link to Admin Menu
 *	(under 'Settings > Code School Badges')
-*
 */
+
 function wpcodeschool_badges_menu(){
-// Use the add_options_page function
-// add_options_page($page_title, $menu_title, $capability, $menu_slug, $function)
+	// Use the add_options_page function
+	// add_options_page($page_title, $menu_title, $capability, $menu_slug, $function)
 	add_options_page(
 		'Code School Badges Plugin',
 		'Code School Badges',
@@ -41,6 +42,7 @@ add_action('admin_menu', 'wpcodeschool_badges_menu');
 * 	Add a Options Page
 *
 */
+
 function wpcodeschool_badges_options_page(){
 	if(!current_user_can('manage_options')){
 		wp_die('You do not have sufficient permission to access this page.');
@@ -83,9 +85,10 @@ function wpcodeschool_badges_options_page(){
 }
 
 /*
-* 	Create Widget
+* 	Create widget
 *
 */
+
 class Wpcodeschool_Badges_Widget extends WP_Widget {
 
 	function wpcodeschool_badges_widget() {
@@ -140,6 +143,7 @@ add_action( 'widgets_init', 'wpcodeschool_badges_register_widgets' );
 * 	Create shortcodes
 *
 */
+
 function wpcodeschool_badges_shortcode($atts, $content = null){
 
 	global $post;
@@ -165,10 +169,12 @@ function wpcodeschool_badges_shortcode($atts, $content = null){
 }
 add_shortcode( 'wpcodeschool_badges', 'wpcodeschool_badges_shortcode' );
 
+
 /*
-* 	Get Code School user profile JSON
+* 	Fetch Code School user profile JSON
 *
 */
+
 function wpcodeschool_badges_get_profile($wpcodeschool_username){
 	$json_feed_url = 'http://codeschool.com/users/' . $wpcodeschool_username . '.json';
 
@@ -181,6 +187,43 @@ function wpcodeschool_badges_get_profile($wpcodeschool_username){
 	return $wpcodeschool_profile;
 }
 
+function wpcodeschool_badges_refresh_profile(){
+	$options = get_option('wpcodeschool_badges');
+	$wpcodeschool_profile = $options['wpcodeschool_profile'];
+
+	$current_time = time();
+
+	$update_difference = $current_time - $last_updated;
+
+	if($update_difference > 43200) { //cache for 12 hours
+		$wpcodeschool_username = $options['wpcodeschool_username'];
+		$options['wpcodeschool_profile'] = wpcodeschool_badges_get_profile( $wpcodeschool_username );
+		$options['last_updated'] = time();
+
+		update_option( 'wpcodeschool_badges',  $options );
+	}
+	//tells ajax request when function is complete
+	die();
+}
+//create custom ajax hook
+add_action( 'wp_ajax_wpcodeschool_badges_recfresh_profile', 'wpcodeschool_badges_refresh_profile' );
+
+function wpcodeschool_badges_enable_frontend_ajax() {
+	//Insert JS into frontend using wp_head hook
+	//Close PHP so we can write JS code...
+	?>
+	<script>
+		var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>'
+	</script>
+	<?php //...and reopen PHP.
+}
+add_action( 'wp_head', 'wpcodeschool_badges_enable_frontend_ajax' );
+
+
+/*
+* 	Enqueue scipts and styles
+*
+*/
 function wpcodeschool_badges_backend_styles(){
 	wp_enqueue_style('wpcodeschool_badges_backend_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
 }
@@ -188,6 +231,6 @@ add_action('admin_head', 'wpcodeschool_badges_backend_styles');
 
 function wpcodeschool_badges_frontend_scripts_and_styles(){
 	wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
-	// wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wptreehouse-badges.js'), array('jquery'), '', true);
+	wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wpcodeschool-badges.js'), array('jquery'), '', true);
 }
 add_action('wp_enqueue_scripts', 'wpcodeschool_badges_frontend_scripts_and_styles');
