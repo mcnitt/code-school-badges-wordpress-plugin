@@ -101,7 +101,7 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		extract($args); //not used but required
 		$title = apply_filters('widget_title', $instance['title']);
 		$num_badges = $instance['num_badges'];
-		$display_tooltip = $instance['display_tooltip'];
+		$widget_badge_size = $instance['widget_badge_size'];
 
 		$options = get_option('wpcodeschool_badges');
 		$wpcodeschool_profile = $options['wpcodeschool_profile'];
@@ -114,7 +114,7 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['num_badges'] = strip_tags($new_instance['num_badges']);
-		$instance['display_tooltip'] = strip_tags($new_instance['display_tooltip']);
+		$instance['widget_badge_size'] = strip_tags($new_instance['widget_badge_size']);
 
 		return $instance;
 	}
@@ -123,7 +123,7 @@ class Wpcodeschool_Badges_Widget extends WP_Widget {
 		// Output admin widget options form
 		$title = esc_attr($instance['title']);
 		$num_badges = esc_attr($instance['num_badges']);
-		$display_tooltip = esc_attr($instance['display_tooltip']);
+		$widget_badge_size = esc_attr($instance['widget_badge_size']);
 
 		$options = get_option('wpcodeschool_badges');
 		$wpcodeschool_profile = $options['wpcodeschool_profile'];
@@ -151,18 +151,18 @@ function wpcodeschool_badges_shortcode($atts, $content = null){
 	$options = get_option('wpcodeschool_badges');
 	$wpcodeschool_profile = $options['wpcodeschool_profile'];
 
+	$all_completed_badges = count($wpcodeschool_profile['courses']['completed']);
+
 	extract ( shortcode_atts(array(
-		'num_badges' => count($wpcodeschool_profile['courses']['completed']),
-		'tooltip' => 'on'
+		'num_badges' => $all_completed_badges,
+		'badge_size' => '60px'
 	), $atts) );
 
-	if ( $tooltip == 'on' ) $tooltip = 1;
-	if ( $tooltip == 'off' ) $tooltip = 0;
-	$display_tooltip = $tooltip;
+	if ( $num_badges == 'all' ) $num_badges = $all_completed_badges;
 
 	//buffer include so it's not added at the top of the page
 	ob_start();
-	require ( 'inc/front-end.php' );
+	require ( 'inc/front-end-shortcode.php' );
 	$content = ob_get_clean();
 
 	return $content;

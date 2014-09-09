@@ -14,6 +14,6 @@
 </p>
 
 <p>
-  <label>Display course information tooltips?</label> 
-  <input type="checkbox" name="<?php echo $this->get_field_name('display_tooltip'); ?>" value="1" <?php checked( $display_tooltip, 1 ); ?> />
+	<label>How big should each badge be? <br>(Examples: 120px, 5ems, 12pts)</label> 
+	<input size="7" name="<?php echo $this->get_field_name('widget_badge_size'); ?>" type="text" value="<?php echo ($widget_badge_size ?: '60px'); ?>"/>
 </p>

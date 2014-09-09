@@ -1,12 +1,6 @@
 jQuery(document).ready(function($){
 
 	/*
-	* Tooltips (coming soon)
-	*
-	*/
-
-
-	/*
 	* Update profile via AJAX
 	*
 	*/
