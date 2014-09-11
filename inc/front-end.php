@@ -9,13 +9,13 @@
 ?>
 
 <ul class="wpcodeschool-badge-widget clearfix">
-	<?php for($i = $wpcodeschool_courses_completed_count -1; $i >= $wpcodeschool_courses_completed_count - $num_badges; $i-- ): ?>
+	<?php for($i = $wpcodeschool_courses_completed_count -1; $i >= $wpcodeschool_courses_completed_count - $num_badges; $i-- ) { ?>
 	<li class="wpcodeschool-badge" style="width: <?php echo $widget_badge_size; ?>; height: <?php echo $widget_badge_size; ?>;>
 		<a href="<?php echo $wpcodeschool_courses_completed[$i]['url']; ?>" title="<?php echo $wpcodeschool_courses_completed[$i]['title']; ?>" target="_blank">
 			<img src="<?php echo $wpcodeschool_courses_completed[$i]['badge']; ?>" alt="<?php echo $wpcodeschool_courses_completed[$i]['title']; ?> badge">
 		</a>
 	</li>					
-	<?php endfor; ?>
+	<?php } ?>
 </ul>
 
 <?php 	
