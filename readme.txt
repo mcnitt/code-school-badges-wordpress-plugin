@@ -1,4 +1,4 @@
-=== Plugin Name ===  
+=== Code School Badges ===  
 Contributors: mcnitt
 Donate link: http://trendmedia.com/
 Tags: shortcode, badges, CodeSchool, code school, profile, API, learning, education
