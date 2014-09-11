@@ -140,7 +140,7 @@
 
 						</div> <!-- .postbox -->
 
-						<?php if($show_json == true): // Debug: Show JSON feed ?>
+						<?php if(WPCODESCHOOL_BADGES__DEBUG == true): // Debug: Show JSON feed ?>
 							<div class="postbox">							
 								<h3><span>JSON Feed</span></h3>
 								<div class="inside">
