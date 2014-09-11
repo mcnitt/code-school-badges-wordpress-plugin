@@ -2,7 +2,7 @@
 	echo $before_widget;
 	echo $before_title . $title . $after_title;
 
-	$wpcodeschool_courses_completed = $wpcodeschool_profile['courses']['completed'];
+	$wpcodeschool_courses_completed = array_reverse($wpcodeschool_profile['courses']['completed']);
 	$wpcodeschool_courses_completed_count = count($wpcodeschool_courses_completed);
 ?>
 <ul class="wpcodeschool-badge-widget clearfix">
