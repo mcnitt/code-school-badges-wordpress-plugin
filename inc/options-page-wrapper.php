@@ -102,7 +102,7 @@
 									    $wpcodeschool_courses_in_progress = $wpcodeschool_profile['courses']['in_progress']; 
 										// Alphabetize courses, Array sort function
 
-									    usort($wpcodeschool_courses_in_progress, compare_title);
+									    usort($wpcodeschool_courses_in_progress, 'compare_title');
 
 									    // Get course sub badges
 									    // Extract course titles from $wpcodeschool_courses_in_progress, 
