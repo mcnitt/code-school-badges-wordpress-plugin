@@ -14,6 +14,6 @@ jQuery(document).ready(function($){
 	// , function( response ) {
 	// 	console.log( 'Code School Badge plugin: AJAX complete' );
 	// }
-	)
+	);
 
 });

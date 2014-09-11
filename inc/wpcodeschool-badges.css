@@ -19,7 +19,6 @@
 	border-color: #a9a9a9;
 	color: #3f4944;
 }
-
 .settings_page_wpcodeschool-badges .postbox a:link, a:visited {
 	color: #3f4944;
 	text-decoration: none;
@@ -36,7 +35,6 @@
 	display: table;
 }
 .badge-group {
-	
 	background-color: #deddd7;
 	border-radius: 3px;
 	padding: 1em;
@@ -54,9 +52,7 @@
 	width: 125px;
 }
 .in-progress .course-badge  {
-
 	-webkit-filter:grayscale(1) brightness(.66);
-
 }
 .sub-badge {
 	float: left;
@@ -64,22 +60,11 @@
 	margin-top: 7px;
 	margin-left: 10px;
 }
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges-and-points li:first-child {
-	/*margin-right: 5px*/
-}   
-
-.settings_page_wpcodeschool-badges .postbox .wpcodeschool-badges-and-points strong {
-	/*color: #92ae57;*/
-}   
 
 /*
  *	Frontend Styles
  *
 */
-
-.wpcodeschool-badge-widget{
-
-}
 
 .wpcodeschool-badge-widget{
 	padding: 0;
@@ -98,4 +83,3 @@
 	width: 100%;
 	border: none;
 }
-
