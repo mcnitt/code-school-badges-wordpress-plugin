@@ -93,51 +93,52 @@
 							</div> <!-- .inside -->
 
 
+							<?php 
+								$wpcodeschool_courses_in_progress = $wpcodeschool_profile['courses']['in_progress'];  
+								if (count($wpcodeschool_courses_in_progress) > 0):
+							?>
+								<h3><span>Courses In Progress</span></h3>
 
-							<h3><span>Courses In Progress</span></h3>
+								<div class="inside">
+									<div class="wpcodeschool-badges in-progress">
+										<?php 
+										    
+											// Alphabetize courses, Array sort function
+										    usort($wpcodeschool_courses_in_progress, 'compare_title');
 
-							<div class="inside">
-								<div class="wpcodeschool-badges in-progress">
-									<?php 
-									    $wpcodeschool_courses_in_progress = $wpcodeschool_profile['courses']['in_progress']; 
-										// Alphabetize courses, Array sort function
+										    // Get course sub badges
+										    // Extract course titles from $wpcodeschool_courses_in_progress, 
+										    // store in array
+									    	$wpcodeschool_course_titles = array();
+									    	foreach($wpcodeschool_courses_in_progress as $course){
+									    		$wpcodeschool_course_titles[] = $course['title'];
+											}
 
-									    usort($wpcodeschool_courses_in_progress, 'compare_title');
+								    		// Create list of badges
+								    		$wpcodeschool_badges = $wpcodeschool_profile['badges'];
 
-									    // Get course sub badges
-									    // Extract course titles from $wpcodeschool_courses_in_progress, 
-									    // store in array
-								    	$wpcodeschool_course_titles = array();
-								    	foreach($wpcodeschool_courses_in_progress as $course){
-								    		$wpcodeschool_course_titles[] = $course['title'];
-										}
+											// Count courses
+											$wpcodeschool_courses_in_progress_count = count($wpcodeschool_courses_in_progress); 
+										?>
+										<?php for($i = 0; $i < $wpcodeschool_courses_in_progress_count; $i++ ): ?>
+											<div class="badge-group <?php if ($wpcodeschool_display_sub_badges != true){ echo 'no-sub-badges'; } ?>">
+								
+												<a href="<?php echo $wpcodeschool_courses_in_progress[$i]['url']; ?>" target="_blank"><img class="course-badge"src="<?php echo $wpcodeschool_courses_in_progress[$i]['badge']; ?>" alt="<?php echo $wpcodeschool_courses_in_progress[$i]['title']; ?> badge"></a>
 
-							    		// Create list of badges
-							    		$wpcodeschool_badges = $wpcodeschool_profile['badges'];
+												<?php if ($wpcodeschool_display_sub_badges == true): ?>	
+													<?php foreach($wpcodeschool_badges as $badge): ?>
+														<?php if (strpos($badge['name'], 'in_progress') !== 0 && strpos(strrev( strtolower($badge['name']) ),strrev( strtolower($wpcodeschool_courses_in_progress[$i]['title']) )) === 0): ?>
+												          <img class="sub-badge" src="<?php echo $badge['badge']; ?>" alt="<?php echo $badge['name']; ?> badge">
+										            <?php endif; endforeach; ?>
+										        <?php endif; ?>
+										        <p class="course-title"><a href="<?php echo $wpcodeschool_courses_in_progress[$i]['url']; ?>" target="_blank"><?php echo $wpcodeschool_courses_in_progress[$i]['title']; ?></a></p>
+																
+											</div>								
+										<?php endfor; ?>
+									</div>
 
-										// Count courses
-										$wpcodeschool_courses_in_progress_count = count($wpcodeschool_courses_in_progress); 
-									?>
-									<?php for($i = 0; $i < $wpcodeschool_courses_in_progress_count; $i++ ): ?>
-										<div class="badge-group <?php if ($wpcodeschool_display_sub_badges != true){ echo 'no-sub-badges'; } ?>">
-										
-											<h4 class="course-title"><a href="<?php echo $wpcodeschool_courses_in_progress[$i]['url']; ?>" target="_blank"><?php echo $wpcodeschool_courses_in_progress[$i]['title']; ?></a></h4>
-
-											<a href="<?php echo $wpcodeschool_courses_in_progress[$i]['url']; ?>" target="_blank"><img class="course-badge"src="<?php echo $wpcodeschool_courses_in_progress[$i]['badge']; ?>" alt="<?php echo $wpcodeschool_courses_in_progress[$i]['title']; ?> badge"></a>
-
-											<?php if ($wpcodeschool_display_sub_badges == true): ?>	
-												<?php foreach($wpcodeschool_badges as $badge): ?>
-													<?php if (strpos($badge['name'], 'in_progress') !== 0 && strpos(strrev( strtolower($badge['name']) ),strrev( strtolower($wpcodeschool_courses_in_progress[$i]['title']) )) === 0): ?>
-											          <img class="sub-badge" src="<?php echo $badge['badge']; ?>" alt="<?php echo $badge['name']; ?> badge">
-									            <?php endif; endforeach; ?>
-									        <?php endif; ?>	
-															
-										</div>								
-									<?php endfor; ?>
-								</div>
-
-							</div> <!-- .inside -->
-
+								</div> <!-- .inside -->
+							<?php endif; ?>
 						</div> <!-- .postbox -->
 
 						<?php if(WPCODESCHOOL_BADGES__DEBUG == true): // Debug: Show JSON feed ?>
