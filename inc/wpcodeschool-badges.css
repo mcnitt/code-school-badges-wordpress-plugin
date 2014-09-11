@@ -81,6 +81,7 @@
   clear: both;
 }
 .wpcodeschool-badge-widget{
+	margin: 0;
 	padding: 0;
 }
 .wpcodeschool-badge-widget li,
