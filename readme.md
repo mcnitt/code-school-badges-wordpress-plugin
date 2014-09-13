@@ -1,8 +1,6 @@
-# Code School Badges Wordpress Plugin
+# Code School Badges WordPress Plugin
 
-Provides both widgets and shortcodes to help display Code School profile badges on your WordPress site.
-
-Available in the WordPress Plugin Directory at: [http://wordpress.org/plugins/code-school-badges/](http://wordpress.org/plugins/code-school-badges/)
+Provides both widgets and shortcodes to help display Code School profile badges on your WordPress site. Available in the WordPress Plugin Directory at: [http://wordpress.org/plugins/code-school-badges/](http://wordpress.org/plugins/code-school-badges/)
 
 ## Description  
 Code School teaches web technologies in the comfort of your browser with video lessons, coding challenges, and screencasts. Use this plugin to proudly display completed Code School course badges on your WordPress blog, website or CV. 
