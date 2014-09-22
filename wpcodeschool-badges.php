@@ -4,7 +4,7 @@
  *	Plugin Name: Code School Badges
  *	Plugin URI: https://github.com/mcnitt/code-school-badges-wordpress-plugin
  *	Description: Provides both widgets and shortcodes to help display Code School profile badges on your website
- *	Version: 1.0.1
+ *	Version: 1.0
  *	Author: Brian McNitt
  *	Author URI: http://trendmedia.com
  *	License: GPLv2 or later

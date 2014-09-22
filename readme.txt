@@ -92,17 +92,11 @@ Contributors are welcome. Please visit the [Code School Badges GitHub project.](
 
 == Changelog ==
 
-= 1.0.1 =  
-* Fixed broken CSS and JS links
-
 = 1.0 =  
 * Initial version of the plugin  
 * Includes basic widget and shortcode display options  
 
 == Upgrade Notice ==
-
-= 1.0.1 =  
-* Fixed broken CSS and JS links
 
 = 1.0 =  
 Initial version of the plugin
