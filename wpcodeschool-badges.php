@@ -4,7 +4,7 @@
  *	Plugin Name: Code School Badges
  *	Plugin URI: https://github.com/mcnitt/code-school-badges-wordpress-plugin
  *	Description: Provides both widgets and shortcodes to help display Code School profile badges on your website
- *	Version: 1.0
+ *	Version: 1.0.1
  *	Author: Brian McNitt
  *	Author URI: http://trendmedia.com
  *	License: GPLv2 or later
@@ -19,13 +19,10 @@
 if (!defined('WPCODESCHOOL_BADGES__DEBUG')) {
     define('WPCODESCHOOL_BADGES__DEBUG', false);
 }
-if (!defined('WPCODESCHOOL_BADGES__PLUGIN_URL')) {
-    define('WPCODESCHOOL_BADGES__PLUGIN_URL', plugins_url('/', __FILE__));
-}
 if (!defined('WPCODESCHOOL_BADGES__SETTINGS_NAME')) {
     define('WPCODESCHOOL_BADGES__SETTINGS_NAME', 'wpcodeschool_badges');
 }
-
+$plugin_url = WP_PLUGIN_URL . '/wpcodeschool-badges';
 $options = array();
 
 /*
@@ -230,16 +227,16 @@ function wpcodeschool_badges_enable_frontend_ajax() {
 add_action('wp_head', 'wpcodeschool_badges_enable_frontend_ajax');
 
 /*
- * 	Enqueue scipts and styles
- *
+*   Enqueue scipts and styles
+*
 */
-function wpcodeschool_badges_backend_styles() {
-    wp_enqueue_style('wpcodeschool_badges_backend_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css', dirname(__FILE__)));
+function wpcodeschool_badges_backend_styles(){
+    wp_enqueue_style('wpcodeschool_badges_backend_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
 }
 add_action('admin_head', 'wpcodeschool_badges_backend_styles');
 
-function wpcodeschool_badges_frontend_scripts_and_styles() {
-    wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css', dirname(__FILE__)));
+function wpcodeschool_badges_frontend_scripts_and_styles(){
+    wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
     wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wpcodeschool-badges.js'), array('jquery'), '', true);
 }
 add_action('wp_enqueue_scripts', 'wpcodeschool_badges_frontend_scripts_and_styles');
