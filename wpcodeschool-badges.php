@@ -231,12 +231,12 @@ add_action('wp_head', 'wpcodeschool_badges_enable_frontend_ajax');
 *
 */
 function wpcodeschool_badges_backend_styles(){
-    wp_enqueue_style('wpcodeschool_badges_backend_styles', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
+    wp_enqueue_style('wpcodeschool_badges_backend_styles', plugins_url('inc/wpcodeschool-badges.css', __FILE__ ));
 }
 add_action('admin_head', 'wpcodeschool_badges_backend_styles');
 
 function wpcodeschool_badges_frontend_scripts_and_styles(){
-    wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('wpcodeschool-badges/inc/wpcodeschool-badges.css'));
-    wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges/wpcodeschool-badges.js'), array('jquery'), '', true);
+    wp_enqueue_style('wpcodeschool_badges_frontend_css', plugins_url('inc/wpcodeschool-badges.css', __FILE__ ));
+    wp_enqueue_script('wpcodeschool_badges_frontend_js', plugins_url('wpcodeschool-badges.js', __FILE__ ), array('jquery'), '', true);
 }
 add_action('wp_enqueue_scripts', 'wpcodeschool_badges_frontend_scripts_and_styles');
