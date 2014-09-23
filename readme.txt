@@ -4,7 +4,7 @@ Donate link: http://trendmedia.com/
 Tags: shortcode, badges, CodeSchool, code school, profile, API, learning, education
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,9 @@ Contributors are welcome. Please visit the [Code School Badges GitHub project.](
 
 == Changelog ==
 
+= 1.0.2 =  
+* Fix broken CSS and JS links on most servers 
+
 = 1.0.1 =  
 * Fix broken CSS and JS links on some servers 
 
@@ -100,6 +103,9 @@ Contributors are welcome. Please visit the [Code School Badges GitHub project.](
 * Includes basic widget and shortcode display options  
 
 == Upgrade Notice ==
+
+= 1.0.2 =  
+* Fix broken CSS and JS links on most servers 
 
 = 1.0.1 =  
 * Fix broken CSS and JS links on some servers 
