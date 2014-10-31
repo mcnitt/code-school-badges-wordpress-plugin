@@ -172,7 +172,7 @@ add_shortcode(WPCODESCHOOL_BADGES__SETTINGS_NAME, 'wpcodeschool_badges_shortcode
 */
 
 function wpcodeschool_badges_get_profile($wpcodeschool_username) {
-    $json_feed_url = 'http://codeschool.com/users/' . $wpcodeschool_username . '.json';
+    $json_feed_url = 'https://www.codeschool.com/users/' . $wpcodeschool_username . '.json';
     
     // Use wp_remote_get, codex: http://codex.wordpress.org/Function_Reference/wp_remote_get
     $args = array('timeout' => 120);
